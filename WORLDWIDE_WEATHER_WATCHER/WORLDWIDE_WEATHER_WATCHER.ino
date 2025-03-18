@@ -248,13 +248,14 @@ void setup() {
   while (!Serial) { ; }
 
   //gpsSerial.begin(9600); //Initialisation du port série du GPS
-
+  lcd.init();
+  
   Wire.begin();
   if (!rtcConnected()) {
        //lcd.setCursor(0, 1);
        //lcd.print(F("PAS RTC"));
     Serial.println("PAS RTC");
-    errW();
+    errH();
     while (1); // Stop si pas de RTC trouvé
   }
 
@@ -272,7 +273,7 @@ void setup() {
     while (1); // Stop si pas de BMP280 trouvé
   }
 
-  lcd.init();
+  
 
   if (!SD.begin(SD_CS_PIN)) {
       carteP();
